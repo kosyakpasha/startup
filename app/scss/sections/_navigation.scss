@@ -1,0 +1,331 @@
+///////////////////dropdown menu//////////////////
+
+// Variables
+$baseMenuBackground: #111;          // Base color theme
+$secondaryMenuBackground: #0186ba;  // Secondary color (highlights, triangles...)
+$gutter: 10px;                      // Base gutter
+
+// Latest CSS box model 
+*, *:after, *:before {
+  box-sizing: border-box; 
+}
+
+// The classic hamburger icon
+// <button class="animenu__toggle">
+//   <span class="animenu__toggle__bar"></span>
+//   <span class="animenu__toggle__bar"></span>
+//   <span class="animenu__toggle__bar"></span>
+// </button>
+.animenu__toggle {
+  display: none;
+  cursor: pointer;
+  //background-color: $baseMenuBackground;
+  border: 0; 
+  padding: 10px;
+  height: 40px;
+  width: 40px;
+  background: #1abc9c;
+
+  &:hover {
+    //background-color: $secondaryMenuBackground;
+  }
+}
+
+.animenu__toggle__bar {
+  display: block;
+  width: 20px; height: 2px;
+  background-color: #fff;    
+  transition: .15s cubic-bezier(0.75, -0.55, 0.25, 1.55);
+
+  &+.animenu__toggle__bar {
+    margin-top: 4px;
+  }  
+}
+
+.animenu__toggle--active {
+  .animenu__toggle__bar {
+    margin: 0;
+    position: absolute;
+
+    &:nth-child(1) {
+      transform: rotate(45deg);
+    }
+
+    &:nth-child(2) {
+      opacity: 0;
+    }
+
+    &:nth-child(3) {
+      transform: rotate(-45deg);
+    }        
+  }
+}
+
+// Clear some defaults
+.animenu {
+  display: block;
+  ul {
+    padding: 0;
+    list-style: none;    
+    font: 0px 'Open Sans', Arial, Helvetica;    
+  }
+
+  li, a {
+    display: inline-block;
+    font-size: 15px;
+  }
+
+  a {
+    color: lighten($baseMenuBackground, 60%);
+    text-decoration: none;
+  }
+}
+
+// First level -> main menu items
+// <nav class="animenu">
+//    <ul class="animenu__nav">
+//    ...
+//    </ul>
+//  </nav>
+.animenu__nav {
+  //background-color: $baseMenuBackground;        
+
+  > li {
+    position: relative;
+    border-right: 1px solid #0d3948;
+
+    > a {
+      //padding: $gutter 3 * $gutter;
+      text-transform: uppercase;
+
+      // http://bit.ly/SkmL1T & currentColor keyword
+      &:first-child:nth-last-child(2):before { 
+        content:""; 
+        position: absolute;
+        border: 4px solid transparent;
+        border-bottom: 0; 
+        border-top-color: currentColor;
+        top: 50%;
+        margin-top: -2px;
+        right: 10px; 
+        display: none; 
+      }  
+    }    
+
+    &:hover {
+      > ul {
+        opacity: 1;
+        visibility: visible;
+        margin: 0;        
+      }
+
+      > a {
+        color: #fff;
+
+      }
+    }
+  }
+}
+.animenu__nav__child a{
+	padding: 7px;
+	text-transform: initial;
+}
+.animenu__nav > li:hover > ul{
+    margin: 0;
+    background: #032f3e;
+    padding: 0;
+    border-radius: 5%;
+}
+.animenu__nav__child a.header-nav-item{
+	padding: 10px 9px;
+}
+.animenu__nav__child > li{
+	margin: 1px 0;
+}
+.animenu__nav__child > li a:hover{
+	transition: all 0.5s ease-out;
+	background: transparent;
+}
+// Second level
+// <nav class="animenu">
+//    <ul class="animenu__nav">
+//      <li>
+//        <ul class="animenu__nav__child"></ul>
+//      </li>
+//    </ul>
+//  </nav>
+.animenu__nav__child {
+  min-width: 100%;
+  position: absolute;
+  top: 100%; left: 0;
+  z-index: 1;   
+  opacity: 0;
+  visibility: hidden;
+  margin: 2 * $gutter 0 0 0;
+  background-color: lighten($baseMenuBackground, 15%);    
+  transition: margin .15s, opacity .15s;
+
+  > li {
+    width: 100%;
+    //border-bottom: 1px solid #0d3948;
+
+  }
+
+  a {
+    padding: $gutter;
+    width: 100%;
+    border-color: lighten($baseMenuBackground, 15%);
+	background: #1abc9c;
+    &:hover {
+      background-color: $secondaryMenuBackground;
+      border-color: $secondaryMenuBackground;
+      color: #fff;
+    }
+  }
+}
+
+// The main breakpoint is 767px
+// Adjust the first and second levels display
+@media screen and (max-width: 768px) {
+  .animenu__toggle {
+    display: inline-block;
+  }
+
+  .animenu__nav,
+  .animenu__nav__child {
+    display: none;
+  }
+
+  // First level -> main menu items
+  // <nav class="animenu">
+  //    <ul class="animenu__nav">
+  //    ...
+  //    </ul>
+  //  </nav>    
+  .animenu__nav {
+    margin: $gutter 0;
+
+    > li {
+      width: 100%;
+      border-right: 0;
+      border-bottom: 1px solid lighten($baseMenuBackground, 25%);
+
+      > a {
+        width: 100%;
+        padding: $gutter;
+        border-color: $baseMenuBackground;
+        position: relative; //dropdown caret
+      }
+    }
+
+    a:hover {
+      background-color: $secondaryMenuBackground;
+      border-color: $secondaryMenuBackground;
+      color: #fff;      
+    }
+  }
+
+  // Second level
+  // <nav class="animenu">
+  //    <ul class="animenu__nav">
+  //      <li>
+  //        <ul class="animenu__nav__child"></ul>
+  //      </li>
+  //    </ul>
+  //  </nav>              
+  .animenu__nav__child {
+    position: static;
+    background-color: lighten($baseMenuBackground, 15%);
+    margin: 0;
+    transition: none;
+    visibility: visible;
+    opacity: 1;     
+
+    > li:first-child > a:after {
+      content: none;
+    }
+
+    a {
+      padding-left: 2 * $gutter;
+      width: 100%;
+    }           
+  }
+}
+
+// Expanding the animenu
+// <nav class="animenu">
+//    <ul class="animenu__nav animenu__nav--open">
+//      <li>
+//        <ul class="animenu__nav__child"></ul>
+//      </li>
+//    </ul>
+//  </nav>
+.animenu__nav--open {
+  display: block !important;
+
+  & .animenu__nav__child {
+    display: block;
+  }
+}
+
+///////////////////dropdown menu//////////////////
+.nav_header{
+    margin-top: 5px;
+    display: inline-block;
+    float: right;
+    z-index: 2;
+}
+.animenu__toggle{
+	background: transparent;
+}
+.nav_header_li{
+	&:last-child .nav_header_li_link{
+		padding-right: 0;
+		padding-left: 0;
+	}
+	display: inline-block;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+}
+.nav_header_li_link{
+	padding: 23px 13px;
+	position: relative;
+	color: #fff;
+	&:after{
+		position: absolute;
+		content: '';
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 0px;
+		background: #fff;
+	}
+	&:hover{
+		&:after{
+			height: 3px;
+			transition: all 0.2s ease-out;
+		}
+	}
+}
+
+.mobile-menu{
+	padding: 10px;
+}
+.nav_default{
+	position: fixed;
+    background: rgba(154, 122, 120, 0.5);
+	width: 100%;
+    z-index: 999;
+    padding-bottom: 15px;
+    left: 0;
+	.header-top{
+		padding-top: 18px;
+    }
+}
+.animenu__nav > li{
+	border-right: 0;
+}
+.header-nav-list{
+	font-size: 0.84em;
+	z-index: 2;
+}

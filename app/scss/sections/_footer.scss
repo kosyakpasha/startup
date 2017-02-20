@@ -1,0 +1,33 @@
+.footer{
+	background: #c0301c;
+	color: #fff;
+	font-family: 'Roboto Slab', sans-serif;
+    text-align: center;
+    padding: 97px 0;
+}
+.footer-social-list{
+	padding-bottom: 34px;
+    margin-bottom: 28px;
+    &:after{
+    	background: #fff;
+    	width: 25%;
+    }
+}
+.footer-social-item{
+	display: inline-block;
+	height: 35px;
+	width: 35px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+    padding: 5px 0;
+    margin: 0 4px;
+    color: #fff;
+    &:hover{
+    	opacity: 0.6;
+    	transition: all 0.2s ease-out;
+    }
+}
+.footer-info{
+    font-size: 0.75em;
+    text-transform: uppercase;
+}

@@ -1,0 +1,155 @@
+/*==========  Desktop First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1200px) {
+
+}
+
+@media only screen and (max-width : 1140px) {
+	.container{
+		width: 100%;
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+	.container_header{
+		padding-left: 5px;
+		padding-right: 5px;
+		width: 100%;
+	}
+}
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 992px) {
+	.service_list_item{
+		width: 49%;
+		padding-bottom: 15px;
+	}
+	.screen_3-text:first-child,
+	.screen_3-text{
+		margin: 0 0 15px;
+		width: 100%;
+	}
+}
+
+/* Small Devices, Tablets */
+@media only screen and (max-width : 768px) {
+	.container_header{
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.logo-block{
+		width: 100%;
+		text-align: center;
+	}
+	.nav_header,
+	.animenu__toggle{
+		float: none !important;
+		position: relative;
+		left: 50%;
+		transform: translateX(-50%);
+	}
+	.nav_header{
+		width: 100%;
+	}
+	.nav_header_li_link{
+    	display: inline-block;
+	}
+	.animenu__nav > li{
+		border-bottom: 0 !important;
+	}
+	.animenu__nav{
+		text-align: center;
+	}
+	.animenu__nav a{
+		&:hover{
+			background: rgba(154, 122, 120, 0.9) !important;
+		}
+	}
+	.nav_header_li_link{
+		&:after{
+			display: none !important;
+		}
+	}
+	.service_list_item{
+		width: 100%;
+	}
+	.animenu__nav > li{
+		border-right: 0;
+	}
+	.animenu__nav  li a{
+		background: rgba(154, 122, 120, 1);
+	}
+	.screen{
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+	.screen_1_text{
+		position: static;
+		transform: translate(0, 0);
+		padding: 35px 0;
+	}
+	.header{
+		height: auto;
+	}
+	.header-nav-list{
+	    position: absolute;
+	    left: 0;
+	    top: 30px;
+	    width: 100%;
+	}
+	.footer{
+		padding: 30px 0;
+	}
+	.screen_3-slider-social-block{
+		position: static !important;
+		margin: 15px 0 0;
+		background: rgba(85, 85, 85, 0.5);
+		z-index: 10;
+		display: inline-block !important;
+		transform: translateX(0) !important;
+		left: 0;
+	}
+	.screen_3-slider-img-block{
+		text-align: center;
+		&:after{
+			display: none;
+		}
+	}
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 320px) {
+
+}
+
+
+/*==========  Mobile First Method  ==========*/
+
+/* Custom, iPhone Retina */
+@media only screen and (min-width : 320px) {
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (min-width : 480px) {
+
+}
+
+/* Small Devices, Tablets */
+@media only screen and (min-width : 768px) {
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (min-width : 992px) {
+
+}
+
+ /* Large Devices, Wide Screens */
+@media only screen and (min-width : 1200px) {
+
+}
